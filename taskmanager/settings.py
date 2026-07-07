@@ -64,3 +64,11 @@ if os.environ.get('RENDER'):
     User = get_user_model()
     if not User.objects.filter(username='admin').exists():
         User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
+# Auto run migrations on Render
+import django
+from django.core.management import call_command
+
+if os.environ.get('RENDER'):
+    django.setup()
+    call_command('migrate', '--noinput')
+    call_command('collectstatic', '--noinput')
