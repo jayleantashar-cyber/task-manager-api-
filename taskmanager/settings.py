@@ -57,4 +57,15 @@ DATABASES = {
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Create admin user on first deploy
+from django.contrib.auth import get_user_model
+from django.db.utils import OperationalError, ProgrammingError
 
+if os.environ.get('RENDER'):
+    try:
+        User = get_user_model()
+        if not User.objects.filter(username='admin').exists():
+            User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
+            print("Admin user created")
+    except (OperationalError, ProgrammingError):
+        pass
