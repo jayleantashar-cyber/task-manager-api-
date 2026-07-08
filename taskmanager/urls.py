@@ -4,13 +4,15 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse(
-        "Task Manager API is running successfully!"
-    )
+    return HttpResponse("Task Manager API is running successfully!")
 
 
 urlpatterns = [
     path("", home),
+
     path("admin/", admin.site.urls),
+
     path("api/", include("task.urls")),
+
+    path("api/", include("users.urls")),
 ]
