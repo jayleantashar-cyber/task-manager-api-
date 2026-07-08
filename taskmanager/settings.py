@@ -1,4 +1,4 @@
-import os
+8import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,7 +14,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+ 'rest_framework',
+'rest_framework.authtoken',
+'task.apps.TaskConfig',
     'rest_framework',
     'task.apps.TaskConfig',
 ]
