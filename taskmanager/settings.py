@@ -14,11 +14,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
- 'rest_framework',
-'rest_framework.authtoken',
-'task.apps.TaskConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'task.apps.TaskConfig',
+    'users.apps.UsersConfig',  # add this line
 ]
 
 
@@ -31,13 +30,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-ROOT_URLCONF = 'taskmanager.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+]jangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
