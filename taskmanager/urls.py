@@ -1,11 +1,16 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.http import HttpResponse
 
+
 def home(request):
-    return HttpResponse("API is Live! Go to /admin/")
+    return HttpResponse(
+        "Task Manager API is running successfully!"
+    )
+
 
 urlpatterns = [
-    path('', home),
-    path('admin/', admin.site.urls),
+    path("", home),
+    path("admin/", admin.site.urls),
+    path("api/", include("task.urls")),
 ]
