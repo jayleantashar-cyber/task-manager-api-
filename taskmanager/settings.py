@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-key')
 DEBUG = False
-ALLOWED_HOSTS = ['task-manager-api-5.onrender.com', 'localhost', '127.0.0.1]
+ALLOWED_HOSTS = ['task-manager-api-5.onrender.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
