@@ -13,8 +13,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles','task',
+    'django.contrib.staticfiles',
+
+    'rest_framework',
+    'task.apps.TaskConfig',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
