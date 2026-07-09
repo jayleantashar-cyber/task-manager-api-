@@ -1,20 +1,18 @@
 import os
+from pathlib import Path
 import dj_database_url
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Security
-SECRET_KEY = os.environ.get("SECRET_KEY", "dev-key")
-DEBUG = False
-
-ALLOWED_HOSTS = [
-    "danieletims-task-manager-api.onrender.com",
-    "localhost",
-    "127.0.0.1",
-]
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Applications
+# SECURITY
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+
+
+# APPLICATIONS
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -23,7 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # Third-party apps
+    # Third-party
     "rest_framework",
     "rest_framework.authtoken",
 
@@ -32,7 +30,8 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
 ]
 
-# Middleware
+
+# MIDDLEWARE
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -44,10 +43,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# URL Configuration
+
 ROOT_URLCONF = "taskmanager.urls"
 
-# Templates
+
+# TEMPLATES
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -64,10 +64,11 @@ TEMPLATES = [
     },
 ]
 
-# WSGI
+
 WSGI_APPLICATION = "taskmanager.wsgi.application"
 
-# Database
+
+# DATABASE
 DATABASES = {
     "default": dj_database_url.config(
         default="sqlite:///db.sqlite3",
@@ -75,43 +76,34 @@ DATABASES = {
     )
 }
 
-# Password validation
+
+# PASSWORD VALIDATION
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# Internationalization
+
+# INTERNATIONALIZATION
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
-# Static files
+
+# STATIC FILES
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STATICFILES_STORAGE = (
-    "whitenoise.storage.CompressedManifestStaticFilesStorage"
-)
 
-# Default primary key field type
+# DEFAULT PK
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Django REST Framework
+
+# DRF
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
