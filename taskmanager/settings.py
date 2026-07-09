@@ -8,10 +8,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "dev-key")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "task-manager-api-5.onrender.com",
+    "danieletims-task-manager-api.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
+
 
 # Applications
 INSTALLED_APPS = [
