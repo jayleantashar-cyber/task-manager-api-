@@ -1,4 +1,4 @@
-8import os
+import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +30,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]jangoTemplates',
+]'djangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
