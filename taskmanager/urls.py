@@ -9,10 +9,7 @@ def home(request):
 
 urlpatterns = [
     path("", home),
-
     path("admin/", admin.site.urls),
-
     path("api/", include("task.urls")),
-
     path("api/", include("users.urls")),
 ]
